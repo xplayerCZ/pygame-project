@@ -3,13 +3,14 @@ import pygame as pg
 WIDTH = 640
 HEIGHT = 480
 CUBE = 50
-VELIKOST_PISMA = 27
+VELIKOST_PISMA = 23
+STYL_TEXT = "Arial"
 
 pg.init()
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 COLOR_NONE = pg.Color('black')
 COLOR_WRITE = pg.Color('red')
-FONT = pg.font.SysFont("Arial", VELIKOST_PISMA)
+FONT = pg.font.SysFont(STYL_TEXT, VELIKOST_PISMA)
 
 
 class Box:
@@ -39,7 +40,10 @@ class Box:
                 else:
                     while len(self.text) != 1:
                         self.text += event.unicode
-                self.txt_surface = FONT.render(self.text.upper(), True, self.color)
+                if self.text == 'm' or self.text == 'w':
+                    self.txt_surface = FONT.render(self.text.center(4).upper(), True, self.color)
+                else:
+                    self.txt_surface = FONT.render(self.text.center(5).upper(), True, self.color)
 
     def update(self):
         width = max(CUBE, self.txt_surface.get_width())
