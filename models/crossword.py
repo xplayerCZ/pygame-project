@@ -1,15 +1,14 @@
-from models import game
+from models import create
 import pygame as pg
 
-clock = pg.time.Clock()
-class Main:
+class Crossword: #trida crossword vytvori krizovku
+    clock = pg.time.Clock()
     answers = [["P", "A", "w"], ["B", "C", "D", "E"], ["E", "b"]]
     input_boxes = []
     for i in range(len(answers)):
         for j in range(len(answers[i])):
             if answers[i][j]:
                 input_boxes.append(game.Box(100 + j * game.CUBE, 25 + i * game.CUBE, game.CUBE, game.CUBE))
-
     done = False
 
     while not done:
