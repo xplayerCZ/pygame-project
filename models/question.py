@@ -1,9 +1,5 @@
 class Question:
-    def __init__(self):
-        self.question = "default q"
-        self.answer = "default a"
-
-    def __init__(self, question, answer):
+    def __init__(self, question="", answer=[]):
         self.question = question
         self.answer = answer
 
@@ -22,5 +18,3 @@ class Question:
     @answer.setter
     def answer(self, value):
         self.__answer = value
-
-
