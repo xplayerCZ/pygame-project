@@ -1,7 +1,5 @@
 import pandas
-import math
 from models.question import Question
-
 
 def load(path):
     questions = []
