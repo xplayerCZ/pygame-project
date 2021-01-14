@@ -1,10 +1,12 @@
 import pygame as pg
+from models import  create_rect
 
 WIDTH = 640
 HEIGHT = 480
-CUBE = 200
+CUBE = 25
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
+
 
 pg.init()
 screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -14,8 +16,6 @@ FONT = pg.font.SysFont(STYL_TEXT, VELIKOST_PISMA)
 
 
 class Box:
-    QUESTION_COUNT = 1
-    QUESTION = "Toto je epicka otazka ?"
 
     def __init__(self, x, y, w, h, text=''):
         self.rect = pg.Rect(x, y, w, h)
@@ -23,19 +23,12 @@ class Box:
         self.text = text
         self.txt_surface = FONT.render(text, True, self.color)
         self.active = False
+        self.txt_surface = FONT.render("<".center(3), True, self.color)
+
 
     def on_click(self, event):
-        if event.type == pg.MOUSEMOTION:
-            if Box.QUESTION_COUNT == 1:
-                Box.QUESTION = "Toto je epicka otazka 1 ?"
-            elif Box.QUESTION_COUNT == 2:
-                Box.QUESTION = "Toto je epicka otazka 2 ?"
-            else:
-                Box.QUESTION = "Toto je epicka otazka 3 ?"
-                Box.QUESTION_COUNT = 0
-
-            self.txt_surface = FONT.render(Box.QUESTION, True, self.color)
-
+        if event.type == pg.MOUSEBUTTONDOWN:
+            self.color = "blue"
 
     def update(self):
         width = max(self.txt_surface.get_width(), self.txt_surface.get_width() + 10)
