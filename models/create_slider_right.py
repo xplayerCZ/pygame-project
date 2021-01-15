@@ -1,8 +1,8 @@
 import pygame as pg
-from models import  create_rect
+from models import  create_box_question
 
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 600
+HEIGHT = 600
 CUBE = 25
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"

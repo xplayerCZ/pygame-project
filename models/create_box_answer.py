@@ -1,8 +1,8 @@
 import pygame as pg
 from models import file_interface
 
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 600
+HEIGHT = 600
 CUBE = 200
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
@@ -12,10 +12,10 @@ screen = pg.display.set_mode((WIDTH, HEIGHT))
 COLOR_NONE = pg.Color('black')
 COLOR_WRITE = pg.Color('red')
 FONT = pg.font.SysFont(STYL_TEXT, VELIKOST_PISMA)
-
+questions = file_interface.load("crossword.xlt")
+answer = "test"
 
 class Box:
-
 
     def __init__(self, x, y, w, h, text=''):
         self.rect = pg.Rect(x, y, w, h)
@@ -24,25 +24,32 @@ class Box:
         self.txt_surface = FONT.render(text, True, self.color)
         self.active = False
         self.QUESTION_COUNT = 1
-        self.QUESTION = "Toto je epicka otazka ?"
+        self.QUESTION = "bruh"
         self.questions = file_interface.load("crossword.xlt")
 
+
     def on_click(self, event):
-        if event.type == pg.MOUSEMOTION:
-            if self.QUESTION_COUNT == 1:
-                self.QUESTION = self.questions[0].question + " ?"
-            elif self.QUESTION_COUNT == 2:
-                self.QUESTION = "Toto je epicka otazka 2 ?"
+        if event.type == pg.MOUSEBUTTONDOWN:
+            if self.rect.collidepoint(event.pos):
+                self.active = not self.active
             else:
-                self.QUESTION = "Toto je epicka otazka 3 ?"
-                self.QUESTION_COUNT = 0
+                self.active = False
+            self.color = COLOR_WRITE if self.active else COLOR_NONE
 
-            self.txt_surface = FONT.render(self.QUESTION, True, self.color)
-
+        if event.type == pg.KEYDOWN:
+            if self.active:
+                if event.key == pg.K_RETURN:
+                    print(self.text)
+                    self.text = ''
+                elif event.key == pg.K_BACKSPACE:
+                    self.text = self.text[:-1]
+                else:
+                    self.text += event.unicode
 
     def update(self):
-        width = max(self.txt_surface.get_width(), self.txt_surface.get_width() + 10)
+        width = max(CUBE, self.txt_surface.get_width() + 10)
         self.rect.w = width
+        self.txt_surface = FONT.render("Odpověď: " + self.text, True, self.color)
 
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))

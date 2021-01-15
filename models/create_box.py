@@ -1,7 +1,7 @@
 import pygame as pg
 
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 600
+HEIGHT = 600
 CUBE = 50
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
@@ -28,7 +28,7 @@ class Box:
                 self.active = not self.active
             else:
                 self.active = False
-            self.color = COLOR_WRITE if self.active else COLOR_NONE
+
 
         if event.type == pg.KEYDOWN:
             if self.active:
@@ -48,6 +48,7 @@ class Box:
     def update(self):
         width = max(CUBE, self.txt_surface.get_width())
         self.rect.w = width
+        self.color = COLOR_WRITE if self.active else COLOR_NONE
 
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))

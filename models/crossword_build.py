@@ -1,8 +1,9 @@
 from models import create_box
-from models import create_rect
+from models import create_box_question
 from models import create_slider_right
 from models import create_slider_left
 from models import file_interface
+from models import create_box_answer
 import pygame as pg
 pg.init()
 
@@ -21,9 +22,10 @@ class Crossword:#trida crossword vytvori krizovku
                 if char:
                     input_boxes.append(create_box.Box(100 + j * create_box.CUBE, 25 + i * create_box.CUBE, create_box.CUBE, create_box.CUBE))
 
-        input_boxes.append(create_rect.Box(100, 400, create_rect.CUBE, 50))
-        input_boxes.append(create_slider_right.Box(create_slider_right.POS_Y, create_slider_right.POS_X, create_rect.CUBE, 35))
-        input_boxes.append(create_slider_left.Box(25, 425, create_rect.CUBE, 35))
+        input_boxes.append(create_box_question.Box(100, 400, create_box_question.CUBE, 50))
+        input_boxes.append(create_slider_right.Box(create_slider_right.POS_Y, create_slider_right.POS_X, create_box_question.CUBE, 35))
+        input_boxes.append(create_slider_left.Box(25, 425, create_box_question.CUBE, 35))
+        input_boxes.append(create_box_answer.Box(100, 475, create_box_answer.CUBE, 50))
 
         done = False
 
@@ -42,4 +44,3 @@ class Crossword:#trida crossword vytvori krizovku
 
             pg.display.flip()
             clock.tick(30)
-
