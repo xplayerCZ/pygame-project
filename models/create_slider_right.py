@@ -29,8 +29,7 @@ class Box:
 
     def on_click(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
-
-            create_rect.Box.QUESTION_COUNT = create_rect.Box.QUESTION_COUNT + 1
+            return
 
     def update(self):
         width = max(self.txt_surface.get_width(), self.txt_surface.get_width() + 10)

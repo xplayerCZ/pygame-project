@@ -1,3 +1,3 @@
-from models import crossword
+from models import crossword_build
 
-crossword.Crossword()
+crossword_build.Crossword().create()

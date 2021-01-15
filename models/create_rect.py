@@ -1,4 +1,5 @@
 import pygame as pg
+from models import file_interface
 
 WIDTH = 640
 HEIGHT = 480
@@ -14,8 +15,7 @@ FONT = pg.font.SysFont(STYL_TEXT, VELIKOST_PISMA)
 
 
 class Box:
-    QUESTION_COUNT = 1
-    QUESTION = "Toto je epicka otazka ?"
+
 
     def __init__(self, x, y, w, h, text=''):
         self.rect = pg.Rect(x, y, w, h)
@@ -23,18 +23,21 @@ class Box:
         self.text = text
         self.txt_surface = FONT.render(text, True, self.color)
         self.active = False
+        self.QUESTION_COUNT = 1
+        self.QUESTION = "Toto je epicka otazka ?"
+        self.questions = file_interface.load("crossword.xlt")
 
     def on_click(self, event):
         if event.type == pg.MOUSEMOTION:
-            if Box.QUESTION_COUNT == 1:
-                Box.QUESTION = "Toto je epicka otazka 1 ?"
-            elif Box.QUESTION_COUNT == 2:
-                Box.QUESTION = "Toto je epicka otazka 2 ?"
+            if self.QUESTION_COUNT == 1:
+                self.QUESTION = self.questions[0].question + " ?"
+            elif self.QUESTION_COUNT == 2:
+                self.QUESTION = "Toto je epicka otazka 2 ?"
             else:
-                Box.QUESTION = "Toto je epicka otazka 3 ?"
-                Box.QUESTION_COUNT = 0
+                self.QUESTION = "Toto je epicka otazka 3 ?"
+                self.QUESTION_COUNT = 0
 
-            self.txt_surface = FONT.render(Box.QUESTION, True, self.color)
+            self.txt_surface = FONT.render(self.QUESTION, True, self.color)
 
 
     def update(self):

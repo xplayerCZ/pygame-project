@@ -1,6 +1,7 @@
 import pandas
 from models.question import Question
 
+
 def load(path):
     questions = []
     data = pandas.read_excel(io=path, header=None)
