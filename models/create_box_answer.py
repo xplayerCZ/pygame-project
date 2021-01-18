@@ -11,6 +11,7 @@ pg.init()
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 COLOR_NONE = pg.Color('black')
 COLOR_WRITE = pg.Color('red')
+COLOR_WIN = pg.Color('green')
 FONT = pg.font.SysFont(STYL_TEXT, VELIKOST_PISMA)
 questions = file_interface.load("crossword.xlt")
 answer = "test"
@@ -45,11 +46,19 @@ class Box:
                     self.text = self.text[:-1]
                 else:
                     self.text += event.unicode
+    def listtostring(s):
+        str1 = " "
+        for e in s:
+            str1 += e
+        return str1
 
     def update(self):
         width = max(CUBE, self.txt_surface.get_width() + 10)
         self.rect.w = width
-        self.txt_surface = FONT.render("Odpověď: " + self.text, True, self.color)
+        if self.text == str(Box.listtostring(self.questions[6].question))[1:]:
+            self.color = COLOR_WIN
+
+        self.txt_surface = FONT.render("Answer: " + self.text, True, self.color)
 
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))

@@ -32,11 +32,10 @@ class Box:
 
         if event.type == pg.KEYDOWN:
             if self.active:
-                if event.key == pg.K_RETURN:
-                        print(self.text)
-                        self.text = ''
-                elif event.key == pg.K_BACKSPACE:
+                if event.key == pg.K_BACKSPACE:
                     self.text = self.text[:-1]
+                elif event.key == pg.K_ESCAPE:
+                    self.text = ''
                 else:
                     while len(self.text) != 1:
                         self.text += event.unicode
