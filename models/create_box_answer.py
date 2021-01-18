@@ -1,11 +1,14 @@
 import pygame as pg
 from models import file_interface
+from models import create_box
 
-WIDTH = 600
-HEIGHT = 600
+WIDTH = create_box.WIDTH
+HEIGHT = create_box.HEIGHT
 CUBE = 200
+CUBEH = 50
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
+SOUBOR = "crossword.xlt"
 
 pg.init()
 screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -13,7 +16,7 @@ COLOR_NONE = pg.Color('black')
 COLOR_WRITE = pg.Color('red')
 COLOR_WIN = pg.Color('green')
 FONT = pg.font.SysFont(STYL_TEXT, VELIKOST_PISMA)
-questions = file_interface.load("crossword.xlt")
+questions = file_interface.load(SOUBOR)
 answer = "test"
 
 class Box:
@@ -25,8 +28,8 @@ class Box:
         self.txt_surface = FONT.render(text, True, self.color)
         self.active = False
         self.QUESTION_COUNT = 1
-        self.QUESTION = "bruh"
-        self.questions = file_interface.load("crossword.xlt")
+        self.QUESTION = "This is a default question"
+        self.questions = file_interface.load(SOUBOR)
 
 
     def on_click(self, event):

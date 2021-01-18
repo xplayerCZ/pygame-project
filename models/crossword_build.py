@@ -7,25 +7,27 @@ from models import create_box_answer
 import pygame as pg
 pg.init()
 
+SOUBOR = "crossword.xlt"
 
-class Crossword:#trida crossword vytvori krizovku
+
+class Crossword:
 
     @staticmethod
     def create():
         clock = pg.time.Clock()
         #answers = [["A", "A", "w", "B", "C", "D", "E"], ["B", "C", "D", "E", "B", "C", "D", "E"], ["E", "b", "B", "C", "D", "E", "B", "C"]]
-        questions = file_interface.load("crossword.xlt")
+        questions = file_interface.load(SOUBOR)
         input_boxes = []
 
         for i, question in enumerate(questions):
             for j, char in enumerate(question.answer):
                 if char:
-                    input_boxes.append(create_box.Box(100 + j * create_box.CUBE, 25 + i * create_box.CUBE, create_box.CUBE , create_box.CUBE ))
+                    input_boxes.append(create_box.Box(100 + j * create_box.CUBE, 40 + i * create_box.CUBE, create_box.CUBE , create_box.CUBE ))
 
         input_boxes.append(create_box_question.Box(100, 400, create_box_question.CUBE, 50))
         input_boxes.append(create_slider_plus.Box(create_slider_plus.POS_Y, create_slider_plus.POS_X, create_slider_plus.CUBE, create_slider_plus.CUBE ))
-        input_boxes.append(create_slider_minus.Box(25, 425, create_slider_minus.CUBE, create_slider_minus.CUBE))
-        input_boxes.append(create_box_answer.Box(100, 475, create_box_answer.CUBE, 50))
+        input_boxes.append(create_slider_minus.Box(create_slider_minus.POS_Y, create_slider_minus.POS_X, create_slider_minus.CUBE, create_slider_minus.CUBE))
+        input_boxes.append(create_box_answer.Box(100, 475, create_box_answer.CUBE, create_box_answer.CUBEH))
 
         done = False
 

@@ -1,14 +1,16 @@
 import pygame as pg
 from models import create_box_question as boxik
 from models import file_interface
+from models import create_box
 
-WIDTH = 600
-HEIGHT = 600
+WIDTH = create_box.WIDTH
+HEIGHT = create_box.HEIGHT
 CUBE = 35
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
-POS_X = 375
+POS_X = 425
 POS_Y = 25
+SOUBOR = "crossword.xlt"
 
 
 pg.init()
@@ -31,7 +33,7 @@ class Box:
     def on_click(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pg.mouse.get_pos()):
-                if boxik.Box.QUESTION_COUNT < len(file_interface.load("crossword.xlt")):
+                if boxik.Box.QUESTION_COUNT < len(file_interface.load(SOUBOR)):
                     self.color = COLOR_WRITE
                     boxik.Box.QUESTION_COUNT = boxik.Box.QUESTION_COUNT + 1
 
