@@ -30,7 +30,7 @@ class Crossword:
         input_boxes.append(box_question.Box(100, create_box.WIDTH * 0.8, box_question.CUBE, 40))
         input_boxes.append(create_slider_plus.Box(create_slider_plus.POS_Y, create_box.WIDTH * 0.81, create_slider_plus.CUBE, create_slider_plus.CUBE))
         input_boxes.append(create_slider_minus.Box(create_slider_minus.POS_Y, create_box.WIDTH*0.87, create_slider_minus.CUBE, create_slider_minus.CUBE))
-        input_boxes.append(create_box_answer.Box(100, create_box.WIDTH*0.87, create_box_answer.CUBE, create_box_answer.CUBEH, SOUBOR))
+        input_boxes.append(create_box_answer.Box(100, create_box.WIDTH*0.87, create_box_answer.CUBE, create_box_answer.CUBEH))
 
         done = False
 
