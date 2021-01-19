@@ -1,16 +1,18 @@
 import pygame as pg
-from models import crossword_build
+import tkinter as tk
 from models import create_box as box
-from models import crossword_build as quest
+from tkinter import filedialog
+from models import  crossword_build
 
 WIDTH = box.WIDTH
 HEIGHT = box.HEIGHT
-CUBE = 300
+CUBE = 200
 POS_X = 475
 POS_Y = 25
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
 SOUBOR = "crossword.xlt"
+
 
 pg.init()
 screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -18,6 +20,8 @@ COLOR_NONE = pg.Color('black')
 COLOR_WRITE = pg.Color('blue')
 COLOR_FILL = pg.Color('grey')
 FONT = pg.font.SysFont(STYL_TEXT, VELIKOST_PISMA)
+root = tk.Tk()
+root.withdraw()
 
 
 class Button:
@@ -28,23 +32,20 @@ class Button:
         self.text = text
         self.txt_surface = FONT.render(text.center(4), True, self.color)
         self.active = False
+        self.file_path = "crossword.xlt"
 
     def on_click(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pg.mouse.get_pos()):
-                self.color = COLOR_WRITE
-                crossword_build.Crossword().create()
-                quest.SOUBOR = SOUBOR
-                pg.quit()
+                self.file_path = filedialog.askopenfilename()
 
-        if event.type == pg.MOUSEBUTTONUP:
-                self.color = COLOR_NONE
 
     def update(self):
         width = max(CUBE, self.txt_surface.get_width())
         self.rect.w = width
-        self.txt_surface = FONT.render("Start".center(5), True, self.color)
-
+        self.txt_surface = FONT.render("Vyber soubor".center(5), True, self.color)
+        SOUBOR = self.file_path
+        crossword_build.SOUBOR = SOUBOR
 
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))

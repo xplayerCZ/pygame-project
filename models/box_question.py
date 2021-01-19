@@ -1,13 +1,13 @@
 import pygame as pg
 from models import file_interface
 from models import create_box
+from models import crossword_build
 
 WIDTH = create_box.WIDTH
 HEIGHT = create_box.HEIGHT
 CUBE = 200
-VELIKOST_PISMA = 23
+VELIKOST_PISMA = 20
 STYL_TEXT = "Arial"
-SOUBOR = "crossword.xlt"
 
 
 pg.init()
@@ -27,7 +27,7 @@ class Box:
         self.txt_surface = FONT.render(text, True, self.color)
         self.active = False
         self.QUESTION = "This is a default question"
-        self.questions = file_interface.load(SOUBOR)
+        self.questions = file_interface.load(crossword_build.SOUBOR)
 
     def on_click(self, event):
         if event.type == pg.MOUSEMOTION:
@@ -48,7 +48,8 @@ class Box:
             elif Box.QUESTION_COUNT > len(self.questions)-2:
                 Box.QUESTION_COUNT = 0
         self.txt_surface = FONT.render("Question " + str(Box.QUESTION_COUNT + 1) + ": " + self.QUESTION, True, self.color)
-
+        if __name__ == '__main__':
+            self.SOUBOR = SOUBOR
 
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))

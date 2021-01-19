@@ -1,5 +1,6 @@
 import pygame as pg
 from screens import start_btn
+from screens import start_choose
 
 pg.init()
 
@@ -9,7 +10,8 @@ class Start:
     def create():
         clock = pg.time.Clock()
         input_boxes = []
-        input_boxes.append(start_btn.Button(185, 500, start_btn.CUBE, start_btn.CUBE/3))
+        input_boxes.append(start_btn.Button(105, 350, 200, 50))
+        input_boxes.append(start_choose.Button(185, 275, 100, 50))
 
         done = False
 

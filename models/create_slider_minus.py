@@ -1,12 +1,12 @@
 import pygame as pg
-from models import create_box_question as boxik
+from models import box_question as boxik
 from models import file_interface
 from models import create_box
+
 
 WIDTH = create_box.WIDTH
 HEIGHT = create_box.HEIGHT
 CUBE = 35
-POS_X = 475
 POS_Y = 25
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"

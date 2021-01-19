@@ -1,8 +1,8 @@
 import pygame as pg
 
-WIDTH = 700
-HEIGHT = 700
-CUBE = 50
+WIDTH = 750
+HEIGHT = 800
+CUBE = 45
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
 

@@ -5,7 +5,7 @@ from models import create_box
 WIDTH = create_box.WIDTH
 HEIGHT = create_box.HEIGHT
 CUBE = 200
-CUBEH = 50
+CUBEH = 40
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
 SOUBOR = "crossword.xlt"
@@ -58,9 +58,8 @@ class Box:
     def update(self):
         width = max(CUBE, self.txt_surface.get_width() + 10)
         self.rect.w = width
-        if self.text == str(Box.listtostring(self.questions[6].question))[1:]:
+        if self.text == str(Box.listtostring(self.questions[len(self.questions)-1].question))[1:]:
             self.color = COLOR_WIN
-
         self.txt_surface = FONT.render("Answer: " + self.text, True, self.color)
 
     def draw(self, screen):

@@ -1,5 +1,5 @@
 import pygame as pg
-from models import create_box_question as boxik
+from models import box_question as boxik
 from models import file_interface
 from models import create_box
 
@@ -8,7 +8,6 @@ HEIGHT = create_box.HEIGHT
 CUBE = 35
 VELIKOST_PISMA = 23
 STYL_TEXT = "Arial"
-POS_X = 425
 POS_Y = 25
 SOUBOR = "crossword.xlt"
 
