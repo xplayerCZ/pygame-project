@@ -4,11 +4,9 @@ from models import create_slider_plus
 from models import create_slider_minus
 from models import file_interface
 from models import create_box_answer
-from screens import  start_choose as choose
 import pygame as pg
-from models import box_question as create
 pg.init()
-SOUBOR = ""
+SOUBOR = "crossword.xlt"
 
 class Crossword:
 

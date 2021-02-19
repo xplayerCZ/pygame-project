@@ -5,6 +5,10 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.core.window import Window
+from tkinter import filedialog
+
+SOUBOR = "crossword.xlt"
+NAZEV_SOUBORU = "Choose File"
 
 class ButtonApp(App):
     def build(self):
@@ -20,7 +24,7 @@ class ButtonApp(App):
                     font_size = '45sp',
                     color=(0,0,0)
                     )
-        labInfo = Label(text="(Optional)Choose file to make crossword from:",
+        labInfo = Label(text="(Optional) Choose file to make crossword from:",
                     font_size = '20sp',
                     color=(0,0,0)
                     )
@@ -34,7 +38,7 @@ class ButtonApp(App):
                      height=100
                      )
 
-        btnChoose = Button(text="Choose File",
+        btnChoose = Button(text=NAZEV_SOUBORU,
                      font_size='20',
                      color=(0, 0, 0),
                         size_hint_y= None,
@@ -44,7 +48,9 @@ class ButtonApp(App):
                      )
 
         btn.bind(on_press=self.turnOn)
+        btnChoose.bind(on_press=self.chooseFile)
 
+#//////////////////////////////////////////////////////////
         layoutLabel.add_widget(lab)
         layoutCenter2.add_widget(btnChoose)
         layoutCenter.add_widget(btn)
@@ -53,13 +59,19 @@ class ButtonApp(App):
         layout.add_widget(layoutLabel)
         layout.add_widget(layoutCenter2)
         layout.add_widget(layoutText)
+#//////////////////////////////////////////////////////////
 
         return layout
 
     def turnOn(self, event):
-        #import main
-        #main.First()
+        from models import crossword_build as quest
+        quest.SOUBOR = SOUBOR
+        quest.Crossword().create()
         root.stop()
+
+    def chooseFile(self, event):
+        SOUBOR = filedialog.askopenfilename()
+
 
 root = ButtonApp()
 root.run()

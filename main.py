@@ -1,4 +1,2 @@
-from screens import start
-class First:
-    def second(self):
-        start.Start.create()
+from screens import start_kivy
+start_kivy.ButtonApp()
