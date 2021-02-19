@@ -10,8 +10,13 @@ from tkinter import filedialog
 SOUBOR = "crossword.xlt"
 NAZEV_SOUBORU = "Choose File"
 
+
+
 class ButtonApp(App):
+
+
     def build(self):
+        self.soubor = SOUBOR
         Window.clearcolor = (255, 255, 255, 255)
 
         layoutLabel = GridLayout(cols=1,row_force_default = True, row_default_height = 100)
@@ -64,13 +69,15 @@ class ButtonApp(App):
         return layout
 
     def turnOn(self, event):
+        print(SOUBOR)
         from models import crossword_build as quest
-        quest.SOUBOR = SOUBOR
+        quest.SOUBOR = self.soubor
         quest.Crossword().create()
         root.stop()
 
     def chooseFile(self, event):
-        SOUBOR = filedialog.askopenfilename()
+        self.soubor = filedialog.askopenfilename()
+        print(SOUBOR)
 
 
 root = ButtonApp()

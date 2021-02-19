@@ -6,7 +6,7 @@ from models import file_interface
 from models import create_box_answer
 import pygame as pg
 pg.init()
-SOUBOR = "crossword.xlt"
+SOUBOR = ""
 
 class Crossword:
 
