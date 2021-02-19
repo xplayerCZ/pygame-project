@@ -49,7 +49,7 @@ class Box:
                 Box.QUESTION_COUNT = 0
         self.txt_surface = FONT.render("Question " + str(Box.QUESTION_COUNT + 1) + ": " + self.QUESTION, True, self.color)
         if __name__ == '__main__':
-            self.SOUBOR = SOUBOR
+            self.SOUBOR = crossword_build.SOUBOR
 
     def draw(self, screen):
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))

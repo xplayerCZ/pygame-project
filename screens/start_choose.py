@@ -2,7 +2,7 @@ import pygame as pg
 import tkinter as tk
 from models import create_box as box
 from tkinter import filedialog
-from models import  crossword_build
+from models import crossword_build
 
 WIDTH = box.WIDTH
 HEIGHT = box.HEIGHT
