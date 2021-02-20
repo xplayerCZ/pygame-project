@@ -1,19 +1,18 @@
 <FloatLayout>:
 
     Label:
-        id: label_nadpis
         text: "Welcome to the game! CROSSWORD"
         font_size: '45sp'
-        size: 10, 10
-        background_color: 1, 1, 1, 8
+        color: 0, 0, 0, 1
+        pos: 5, 250
 
     Label:
         text: "(Optional) Choose file to make crossword from:"
         font_size: '20sp'
-        color: 0, 0, 0, 0
+        color: 0, 0, 0, 1
+        pos: 0, -150
 
     Button:
-        id: button_start
         text: "Start"
         background_color: 255, 0, 0, 0.8
         size_hint: .5, .1
@@ -21,9 +20,20 @@
         on_press:app.turnOn(self)
 
     Button:
-        id: button_choose
         text:"Choose File"
         background_color: 1, 1, 1, 1
         size_hint: 1, .2
         pos: 0, 5
         on_press:app.chooseFile(self)
+
+    TextInput:
+        id: input
+        hint_text: 'Insert your ingame name'
+        pos: 250, 300
+        multiline: False
+        size_hint_x: None
+        size_hint_y: None
+        width: 300
+        height: 50
+        on_text: app.enteredName()
+
