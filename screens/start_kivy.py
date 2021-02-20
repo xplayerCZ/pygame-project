@@ -14,7 +14,6 @@ NAZEV_SOUBORU = "Choose File"
 
 class ButtonApp(App):
 
-
     def build(self):
         self.soubor = SOUBOR
         Window.clearcolor = (255, 255, 255, 255)

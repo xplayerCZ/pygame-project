@@ -1,0 +1,29 @@
+<FloatLayout>:
+
+    Label:
+        id: label_nadpis
+        text: "Welcome to the game! CROSSWORD"
+        font_size: '45sp'
+        size: 10, 10
+        background_color: 1, 1, 1, 8
+
+    Label:
+        text: "(Optional) Choose file to make crossword from:"
+        font_size: '20sp'
+        color: 0, 0, 0, 0
+
+    Button:
+        id: button_start
+        text: "Start"
+        background_color: 255, 0, 0, 0.8
+        size_hint: .5, .1
+        pos: 200, 200
+        on_press:app.turnOn(self)
+
+    Button:
+        id: button_choose
+        text:"Choose File"
+        background_color: 1, 1, 1, 1
+        size_hint: 1, .2
+        pos: 0, 5
+        on_press:app.chooseFile(self)

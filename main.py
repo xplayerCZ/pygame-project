@@ -1,2 +1,2 @@
-from screens import start_kivy
-start_kivy.ButtonApp()
+from screens import start_kivy_kv
+start_kivy_kv.ButtonApp()

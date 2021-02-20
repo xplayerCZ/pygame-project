@@ -36,6 +36,8 @@ class Crossword:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     done = True
+                    pg.quit()
+                    exit()
                 for box in input_boxes:
                     box.on_click(event)
             for box in input_boxes:
